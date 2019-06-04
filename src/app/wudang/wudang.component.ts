@@ -21,7 +21,8 @@ export class WudangComponent implements OnInit {
       .subscribe(resp => {
         console.log('persons', resp);
         this.rows = resp;
-      });
+      }
+    );
   }
 
   ngOnInit() {
