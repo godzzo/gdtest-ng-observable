@@ -1,27 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationStart } from '@angular/router';
 
-import { filter } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
+
+import { BasicComponent } from 'shared/component/basic.component';
 
 @Component({
   selector: 'app-lebowski',
   templateUrl: './lebowski.component.html',
   styleUrls: ['./lebowski.component.scss']
 })
-export class LebowskiComponent implements OnInit {
+export class LebowskiComponent extends BasicComponent implements OnInit {
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
+    super();
+
     console.log('LebowskiComponent: router', router);
     console.log('LebowskiComponent: activatedRoute', activatedRoute);
 
-    router.events.pipe(filter(e => e instanceof NavigationStart)).subscribe(e => {
-      const navigation = router.getCurrentNavigation();
+    router.events
+      .pipe(
+        takeUntil(this.unsubscribe$),
+        filter(e => e instanceof NavigationStart)
+      )
+      .subscribe(e => {
+        const navigation = router.getCurrentNavigation();
 
-      console.log('LebowskiComponent: navigation', navigation);
-    });
+        console.log('LebowskiComponent: navigation', navigation);
+      }
+    );
   }
 
   ngOnInit() {
