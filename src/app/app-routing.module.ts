@@ -3,10 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { LebowskiComponent } from './lebowski/lebowski.component';
 import { JoelComponent } from './joel/joel.component';
+import { WudangComponent } from './wudang/wudang.component';
 
 const routes: Routes = [
   {path: 'lebowski/:name', component: LebowskiComponent},
-  {path: 'joel/:name', component: JoelComponent}
+  {path: 'joel/:name', component: JoelComponent},
+  {path: 'wudang/:name', component: WudangComponent}
+
 ];
 
 @NgModule({
