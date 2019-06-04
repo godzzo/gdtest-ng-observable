@@ -1,3 +1,11 @@
 <p>
   starbucks works!
 </p>
+
+<table>
+  <tr *ngFor="let row of rows">
+    <td>
+      {{row.name.first}} {{row.name.last}}
+    </td>
+  </tr>
+</table>

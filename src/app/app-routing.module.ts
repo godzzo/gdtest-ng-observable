@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'lebowski/:name', component: LebowskiComponent},
   {path: 'joel/:name', component: JoelComponent},
   {path: 'wudang/:name', component: WudangComponent},
-  {path: 'starbucks/:name', component: StarbucksComponent, resolve: {coffees: CoffeeService}}
+  {path: 'starbucks/:name', component: StarbucksComponent, resolve: {rows: CoffeeService}}
 ];
 
 @NgModule({
