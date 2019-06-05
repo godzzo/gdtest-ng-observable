@@ -11,6 +11,7 @@ import { BasicComponent } from 'shared/component/basic.component';
   styleUrls: ['./lebowski.component.scss']
 })
 export class LebowskiComponent extends BasicComponent implements OnInit {
+  name: string = null;
 
   constructor(
     private router: Router,
@@ -20,6 +21,10 @@ export class LebowskiComponent extends BasicComponent implements OnInit {
 
     console.log('LebowskiComponent: router', router);
     console.log('LebowskiComponent: activatedRoute', activatedRoute);
+
+    activatedRoute.params.subscribe(data => {
+      this.name = data.name;
+    });
 
     router.events
       .pipe(

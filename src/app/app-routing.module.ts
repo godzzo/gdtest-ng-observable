@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LebowskiComponent } from './lebowski/lebowski.component';
-import { JoelComponent } from './joel/joel.component';
-import { WudangComponent } from './wudang/wudang.component';
+import { LebowskiComponent } from './components/lebowski/lebowski.component';
+import { JoelComponent } from './components/joel/joel.component';
+import { WudangComponent } from './components/wudang/wudang.component';
 
 import { CoffeeService } from './services/coffee.service';
-import { StarbucksComponent } from './starbucks/starbucks.component';
+import { StarbucksComponent } from './components/starbucks/starbucks.component';
 
 const routes: Routes = [
   {path: 'lebowski/:name', component: LebowskiComponent},
@@ -23,7 +23,6 @@ const routes: Routes = [
     RouterModule
   ],
   providers: [
-    CoffeeService
   ]
 })
 export class AppRoutingModule { }

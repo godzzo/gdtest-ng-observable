@@ -12,9 +12,14 @@ export class StarbucksComponent implements OnInit {
   rows: any;
 
   constructor(activatedRoute: ActivatedRoute) {
-    activatedRoute.data.pipe(map(data => data.rows)).subscribe(rows => {
-      this.rows = rows;
-    });
+    activatedRoute.data
+      .pipe(
+        map(data => data.rows)
+      ).subscribe(rows => {
+        console.log('StarbucksComponent >> constructor >> rows', rows);
+        this.rows = rows;
+      })
+    ;
   }
 
   ngOnInit() {

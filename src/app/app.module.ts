@@ -6,10 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { LebowskiComponent } from './lebowski/lebowski.component';
-import { JoelComponent } from './joel/joel.component';
-import { WudangComponent } from './wudang/wudang.component';
-import { StarbucksComponent } from './starbucks/starbucks.component';
+import { LebowskiComponent } from './components/lebowski/lebowski.component';
+import { JoelComponent } from './components/joel/joel.component';
+import { WudangComponent } from './components/wudang/wudang.component';
+import { StarbucksComponent } from './components/starbucks/starbucks.component';
 
 @NgModule({
   declarations: [
