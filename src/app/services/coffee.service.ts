@@ -10,18 +10,19 @@ import { WeatherService } from './weather.service';
   providedIn: 'root'
 })
 export class CoffeeService implements Resolve<any> {
-  weatherData: any;
+  weather$: any;
+  weatherRows: any;
   buyers: any;
 
   constructor(
     private http: HttpClient,
     private weather: WeatherService
   ) {
-    this.weatherData = weather.getData();
+    this.weather$ = weather.getData();
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-    console.log('CoffeeService.resolve >>> weatherData', this.weatherData);
+    console.log('CoffeeService.resolve >>> weatherData', this.weather$);
     console.log('CoffeeService.resolve >>> buyers', this.buyers);
 
     const buyers = this.getBuyers();
@@ -35,22 +36,27 @@ export class CoffeeService implements Resolve<any> {
     if (this.buyers) {
       return of(this.buyers);
     } else {
-      const wather$ = this.weatherData
+      const buyers$ = this.weather$
         .pipe(
+          map(rows => {
+            this.weatherRows = rows;
+          }),
           switchMap(el => {
+            console.log('We have wather rows!!!', this.weatherRows);
+
             return this.http.get('/assets/persons.json')
           }),
           delay(2500)
         )
       ;
 
-      wather$.subscribe(rows => {
-        console.log('wather$.subscribe(rows AKA buyers', rows);
+      buyers$.subscribe(rows => {
+        console.log('buyers$.subscribe(rows AKA buyers', rows);
 
         this.buyers = rows;
       });
 
-      return wather$;
+      return buyers$;
     }
   }
 }

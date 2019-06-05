@@ -22,7 +22,7 @@ export class WeatherService {
     if (!this.data) {
       return this.http.get('/assets/actors.json')
         .pipe(
-          delay(9000),
+          delay(4500),
           map(data => {
             this.data = data;
 
